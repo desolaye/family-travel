@@ -1,0 +1,15 @@
+services:
+  app:
+    container_name: travel-family
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    pull_policy: always
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+
+volumes:
+  data:
