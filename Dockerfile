@@ -2,14 +2,16 @@ FROM node:23-bullseye
 
 WORKDIR /app
 
-RUN mkdir -p /app/db && chown node:node /app/db
+RUN mkdir -p /app/build /app/db && \
+    chown -R node:node /app/build /app/db
 
-COPY package.json package-lock.json ./
-COPY tsconfig.json ./
+COPY --chown=node:node package.json package-lock.json ./
+COPY --chown=node:node tsconfig.json ./
 
-RUN npm ci && npm rebuild better-sqlite3
+RUN npm ci
 
 USER node
+
 COPY --chown=node:node . .
 
 RUN npm run build
