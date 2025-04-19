@@ -1,7 +1,17 @@
 import Database from 'better-sqlite3'
+import path from 'path'
+import fs from 'fs'
+
 import { User, AccessKey, Payment, EverydayPaymentType } from './types'
 
-const db = new Database('travel-bot.db')
+const dbPath = path.resolve('/app/db/database.sqlite')
+
+const dbDir = path.dirname(dbPath)
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true })
+}
+
+const db = new Database(dbPath)
 
 function initializeDatabase() {
   db.exec(`

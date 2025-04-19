@@ -1,17 +1,13 @@
 services:
   app:
     container_name: travel-family
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     restart: always
-    pull_policy: always
-    env_file:
-      - .env
     ports:
-      - 3000:3000
+      - "3000:3000"
     volumes:
-      - sqlite_data:/data
+      - sqlite_data:/app/db  
+      - /app/node_modules
 
 volumes:
   sqlite_data:
