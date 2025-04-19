@@ -19,7 +19,7 @@ addKey.command('add_key', async (ctx) => {
 
   const IPString = ipAddress ? ` с IP \`${ipAddress}\`` : ''
 
-  await ctx.reply(`Ключ \`${key}\` успешно добавлен${IPString}.`, {
+  await ctx.reply(`Ключ \`${key}\` успешно добавлен${IPString}`, {
     parse_mode: 'MarkdownV2',
   })
 })

@@ -59,7 +59,7 @@ const checkEveryday = () => {
       await createEverydayPayment(new Date().toISOString())
       await userPay()
     }
-  }, 60 * 1000 * 60 * 6) // 60 * 1000ms = 1min
+  }, 60 * 1000 * 60) // 60 * 1000ms = 1min
 
   return interval
 }
