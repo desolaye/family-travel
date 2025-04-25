@@ -16,8 +16,8 @@ help.command('help', async (ctx) => {
     '/key <PUBLIC_KEY> - Вход по ключу\n' +
     '/start - Стартовая информация\n\n' +
     'Для пользователей:\n\n' +
-    '/balance - Стартовая информация\n' +
-    '/pay - Информация по опате\n' +
+    '/balance - Ваш баланс\n' +
+    '/pay - Информация по оплате\n' +
     '/pay <AMOUNT> - Оплата за поездку\n'
 
   if (user?.isAdmin) {

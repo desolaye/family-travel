@@ -26,7 +26,7 @@ userRegister.command('key', async (ctx) => {
     return
   }
 
-  const accessKey = getAccessKey(key)
+  const accessKey = await getAccessKey(key)
 
   if (!accessKey || accessKey.isUsed) {
     await ctx.reply('Неверный ключ')
@@ -36,7 +36,7 @@ userRegister.command('key', async (ctx) => {
   let user = await getUserByTelegramId(userId)
 
   if (!user) {
-    user = createUser(userId, ctx.chat.id)
+    user = await createUser(userId, ctx.chat.id)
     await ctx.reply('Аккаунт зарегистрирован!')
   }
 

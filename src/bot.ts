@@ -41,7 +41,7 @@ const userPay = async () => {
     if (parsed <= Number(DAILY_PAYMENT) * 3) {
       await api.sendMessage(
         user.chatId,
-        `Ваш текущий баланс ${parsed}. Время пополнить баланс`
+        `Ваш текущий баланс ${parsed}. Время пополнить баланс. Используйте команду /pay`
       )
     }
   }
@@ -49,13 +49,9 @@ const userPay = async () => {
 
 const checkEveryday = () => {
   const interval = setInterval(async () => {
-    console.log('проверяем платежи...')
-
     const lastPayment = await getLastEverydayPayment()
 
     if (!lastPayment || isTimeToPay(lastPayment.day, new Date().toISOString())) {
-      console.log('время оплаты')
-
       await createEverydayPayment(new Date().toISOString())
       await userPay()
     }
@@ -65,8 +61,6 @@ const checkEveryday = () => {
 }
 
 const main = async () => {
-  console.log('Запуск бота')
-
   const { BOT_TOKEN } = envParams()
   const bot = new Bot<BotContext>(BOT_TOKEN)
 
@@ -94,7 +88,6 @@ const main = async () => {
   })
 
   checkEveryday()
-  console.log('Бот запущен!')
 }
 
 main()

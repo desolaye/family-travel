@@ -13,6 +13,7 @@ const approve = new Composer<BotContext>()
 approve.command('approve', async (ctx) => {
   const [_, paymentIdStr] = ctx.msg.text.split(' ')
   const paymentId = parseInt(paymentIdStr)
+
   if (isNaN(paymentId)) {
     await ctx.reply('Please provide a valid payment ID: /approve <PAYMENT_ID>')
     return

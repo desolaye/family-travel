@@ -32,7 +32,14 @@ export async function authMiddleware(ctx: BotContext, next: NextFunction) {
     return
   }
 
-  const adminCommands = ['/add_key', '/approve', 'reject', '/inspect', '/list']
+  const adminCommands = [
+    '/add_key',
+    '/approve',
+    'reject',
+    '/inspect',
+    '/list',
+    '/pay_for',
+  ]
 
   if (adminCommands.some((cmd) => ctx.msg?.text?.startsWith(cmd))) {
     const { isAdmin } = ctx.session.user || {}

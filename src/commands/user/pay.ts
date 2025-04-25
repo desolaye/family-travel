@@ -28,7 +28,7 @@ pay.command('pay', async (ctx: CommandContext<BotContext>) => {
     return
   }
 
-  const payment = createPayment(user.id, amount)
+  const payment = await createPayment(user.id, amount)
   await ctx.reply(`Заявка на оплату суммой ${amount} создана. Ожидайте одобрения`)
 
   const admin = getAllUsers().find((u) => u.isAdmin)
